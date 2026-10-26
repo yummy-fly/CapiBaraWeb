@@ -1,0 +1,1 @@
+<view class="page data-v-e6564f41"><tab-bar wx:if="{{a}}" class="data-v-e6564f41" u-i="e6564f41-0" bind:__l="__l" u-p="{{a}}"/></view>

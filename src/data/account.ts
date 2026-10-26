@@ -1,0 +1,137 @@
+/**
+ * 个人中心页 + 收藏页模拟数据
+ */
+
+const IMG_BASE = 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt='
+const img = (prompt: string, size: string) => IMG_BASE + encodeURIComponent(prompt) + '&image_size=' + size
+
+/* ================= 个人中心页 ================= */
+
+export interface BookingStat {
+  label: string
+  count: number
+}
+
+export interface AccountMenuCard {
+  key: string
+  icon: string
+  title: string
+  desc: string
+}
+
+export interface AccountData {
+  eyebrow: string
+  title: string
+  desc: string
+  user: {
+    role: string
+    name: string
+    phone: string
+    logoutText: string
+  }
+  bookingTitle: string
+  bookingMore: string
+  stats: BookingStat[]
+  menus: AccountMenuCard[]
+  shieldTip: string
+}
+
+export const accountData: AccountData = {
+  eyebrow: 'MY LITTLE COUNTRYSIDE',
+  title: '我的山野',
+  desc: '把喜欢的生活，留在自己的清单里。',
+  user: {
+    role: 'VILLAGE GUEST',
+    name: '小林（演示）',
+    phone: '13800000000',
+    logoutText: '退出演示登录'
+  },
+  bookingTitle: '我的预约',
+  bookingMore: '全部订单',
+  stats: [
+    { label: '待支付', count: 2 },
+    { label: '待确认', count: 0 },
+    { label: '待使用', count: 11 },
+    { label: '已完成', count: 1 }
+  ],
+  menus: [
+    { key: 'favorites', icon: 'heart', title: '我的收藏', desc: '3份山野心愿' },
+    { key: 'messages', icon: 'bell', title: '村里消息', desc: '预约、确认与核销通知' },
+    { key: 'profile', icon: 'user', title: '演示个人资料', desc: '联系人与手机号，不存储身份证' },
+    { key: 'contact', icon: 'headset', title: '联系村里', desc: '客服与到店咨询' }
+  ],
+  shieldTip: '模拟微信登录仅改变本地展示状态，不包含身份验证；运营后台无需密码，正式版本须接入真实权限。'
+}
+
+/* ================= 收藏页 ================= */
+
+export interface FavoriteItem {
+  id: string
+  /** 类型：住宿 / 体验 */
+  type: string
+  /** 图片左上角标签 */
+  tag: string
+  /** 分类小字 */
+  category: string
+  title: string
+  desc: string
+  /** 规格 meta，如「38㎡ · 1.8m大床 · 2 人」 */
+  meta: string
+  price: string
+  priceUnit: string
+  img: string
+}
+
+export interface FavoritesData {
+  eyebrow: string
+  title: string
+  desc: string
+  favorites: FavoriteItem[]
+}
+
+export const favoritesData: FavoritesData = {
+  eyebrow: 'SAVED FOR A SLOWER DAY',
+  title: '我的山野心愿',
+  desc: '把喜欢的房间、手作和餐桌，留给下一个好日子。',
+  favorites: [
+    {
+      id: 'mountain-room',
+      type: '住宿',
+      tag: '山景露台',
+      category: '双人度假',
+      title: '山景 · 大床房',
+      desc: '推开窗，山与风景进来',
+      meta: '38㎡ · 1.8m大床 · 2 人',
+      price: '580',
+      priceUnit: '/晚',
+      img: img('cozy mountain view bedroom with large bed and green blanket, wooden interior, big window to forest mountain scenery, soft morning light, documentary photography', 'landscape_4_3'),
+      faved: true
+    },
+    {
+      id: 'family-suite',
+      type: '住宿',
+      tag: '亲子友好',
+      category: '亲子套房',
+      title: '田园 · 亲子套房',
+      desc: '带一家人住进田园里，交换四季',
+      meta: '50㎡ · 双床 · 儿童床 · 4 人',
+      price: '880',
+      priceUnit: '/晚',
+      img: img('family suite bedroom in countryside guesthouse with two beds and children bed, garden view window, warm wooden furniture, documentary photography', 'landscape_4_3'),
+      faved: true
+    },
+    {
+      id: 'wine-craft',
+      type: '体验',
+      tag: '非遗手作',
+      category: '古法酿酒',
+      title: '古法酿酒体验',
+      desc: '酿一坛米酒，留一份山野记忆',
+      meta: '约90分钟 · 6岁以上',
+      price: '128',
+      priceUnit: '/人',
+      img: img('artisan hands working with large clay wine fermentation jars steaming rice in traditional Chinese craft workshop, baskets and wooden tools, warm earthy tones, documentary photography', 'landscape_4_3'),
+      faved: true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "卡皮巴拉自治村",
+  "appid": "",
+  "description": "把日子，过慢一点",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "h5": {
+    "title": "卡皮巴拉自治村 · 把日子，过慢一点",
+    "router": {
+      "mode": "hash"
+    }
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false,
+      "minified": true
+    },
+    "usingComponents": true,
+    "navigationStyle": "custom"
+  }
+}

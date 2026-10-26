@@ -1,0 +1,1 @@
+"use strict";const e=require("../../common/vendor.js");Math||o();const o=()=>"../../components/TabBar.js",r=e.defineComponent({__name:"orders",setup:o=>(o,r)=>({a:e.p({current:"orders"})})}),s=e._export_sfc(r,[["__scopeId","data-v-e6564f41"]]);wx.createPage(s);

@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/experiences/experiences",
+    "pages/experiences/detail",
+    "pages/experiences/book",
+    "pages/chefs/chefs",
+    "pages/chefs/detail",
+    "pages/chefs/book",
+    "pages/stays/stays",
+    "pages/stays/detail",
+    "pages/stays/book",
+    "pages/orders/orders",
+    "pages/account/account",
+    "pages/favorites/favorites"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#F2F3E8"
+  },
+  "navigationStyle": "custom",
+  "usingComponents": {}
+}

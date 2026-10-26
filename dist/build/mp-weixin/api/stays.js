@@ -1,0 +1,1 @@
+"use strict";const t=require("./index.js"),a=require("../data/stays.js");exports.fetchStayBooking=function(e){return t.fetchData(a.stayBookingData)},exports.fetchStayDetail=function(e){return t.fetchData(a.stayDetailData)},exports.fetchStaysData=function(){return t.fetchData(a.staysData)};

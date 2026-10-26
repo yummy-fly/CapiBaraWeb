@@ -1,0 +1,1 @@
+"use strict";const t=require("./index.js"),e=require("../data/chefs.js");exports.fetchChefBooking=function(a){return t.fetchData(e.chefBookingData)},exports.fetchChefDetail=function(a){return t.fetchData(e.chefDetailData)},exports.fetchChefsData=function(){return t.fetchData(e.chefsData)};

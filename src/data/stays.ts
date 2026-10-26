@@ -1,0 +1,193 @@
+/**
+ * 民宿列表页模拟数据
+ */
+
+const IMG_BASE = 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt='
+const img = (prompt: string, size: string) => IMG_BASE + encodeURIComponent(prompt) + '&image_size=' + size
+
+export interface StayItem {
+  id: string
+  /** 图片左上角标签，如「山景露台」 */
+  tag: string
+  /** 分类（与筛选 chips 对应）：双人度假 / 亲子家庭 */
+  category: string
+  title: string
+  desc: string
+  /** 房型参数，如「38㎡ · 1.8m大床 · 2 人」 */
+  specs: string
+  price: string
+  img: string
+  faved: boolean
+}
+
+export interface StaysData {
+  eyebrow: string
+  title: string
+  desc: string
+  /** 日期卡底部加价提示 */
+  priceNote: string
+  /** 分类筛选 chips（第一项为「全部」） */
+  filters: string[]
+  stays: StayItem[]
+  noticeTitle: string
+  noticeDesc: string
+}
+
+export const staysData: StaysData = {
+  eyebrow: 'STAY CLOSE TO NATURE',
+  title: '住进山野的好风景',
+  desc: '睡个好觉，吃顿早餐，让忙碌在山野里慢下来。',
+  priceNote: '周五 / 周六每晚加价 ¥100（演示）',
+  filters: ['全部', '双人度假', '亲子家庭'],
+  stays: [
+    {
+      id: 'mountain-room',
+      tag: '山景露台',
+      category: '双人度假',
+      title: '山景 · 大床房',
+      desc: '推开窗，让山风住进来',
+      specs: '38㎡ · 1.8m大床 · 2 人',
+      price: '580',
+      img: img('cozy mountain view bedroom with large window facing green mountains, wooden bed with sage green throw, rattan rug, warm morning light, natural interior design photography', 'landscape_4_3'),
+      faved: false
+    },
+    {
+      id: 'garden-family',
+      tag: '亲子友好',
+      category: '亲子家庭',
+      title: '田园 · 亲子套房',
+      desc: '把一家人的周末，交给田野',
+      specs: '56㎡ · 双床+儿童床 · 4 人',
+      price: '880',
+      img: img('bright family suite bedroom in countryside guesthouse, two beds with children bed, pastoral decor with dried flowers, garden view window, warm natural interior photography', 'landscape_4_3'),
+      faved: false
+    }
+  ],
+  noticeTitle: '选个好日子，来村里做客',
+  noticeDesc: '所有图片、人物、价格均为演示；预约后可在订单中心体验模拟支付与核销。'
+}
+
+/* ================= 民宿详情页 ================= */
+
+export interface StayHighlight {
+  icon: string
+  text: string
+}
+
+export interface StaySpec {
+  label: string
+  value: string
+}
+
+export interface StayDetailData {
+  id: string
+  /** 标题上方分类，如「双人度假」 */
+  category: string
+  title: string
+  desc: string
+  img: string
+  imageLabel: string
+  highlights: StayHighlight[]
+  /** 关于这段好时光 */
+  about: string
+  includes: string[]
+  specs: StaySpec[]
+  notices: string[]
+  refund: string
+  comboText: string
+  priceCard: {
+    eyebrow: string
+    price: string
+    /** 周五/周六价格 */
+    weekendPrice: string
+    tags: string[]
+    /** 已约满的日期（yyyy-MM-dd） */
+    closedDates: string[]
+    buttonText: string
+    footnote: string
+  }
+}
+
+export const stayDetailData: StayDetailData = {
+  id: 'mountain-room',
+  category: '双人度假',
+  title: '山景 · 大床房',
+  desc: '推开窗，让山风住进来',
+  img: img('cozy mountain view bedroom with large window facing green mountains, wooden bed with sage green throw, rattan rug, warm pendant lamp, natural interior design photography', 'landscape_16_9'),
+  imageLabel: '概念图片 · 非实拍',
+  highlights: [
+    { icon: 'clock', text: '38㎡ · 1.8m大床 · 2 人' },
+    { icon: 'users', text: '舒适入住' },
+    { icon: 'pin', text: '自治村 · 演示场地' }
+  ],
+  about: '在山间醒来，是一天最好的开始。木质家具、柔软床品与窗外的层层山色，让每一次入住都回到生活本来的节奏。',
+  includes: ['双人早餐', '独立卫浴及洗浴用品', '空调 / 免费 Wi-Fi', '山景露台', '免费停车'],
+  specs: [
+    { label: '房间面积', value: '38㎡' },
+    { label: '房型', value: '1.8m 大床' },
+    { label: '入住时间', value: '14:00 后' },
+    { label: '离店时间', value: '12:00 前' }
+  ],
+  notices: [
+    '请提前15分钟到达；儿童需成人陪同，手作操作遵守导师指引；如遇天气影响由运营联调调整。',
+    '入住证件请到店登记，Demo不采集身份证。演示房价含基础服务，不收取真实押金；正式押金政策待甲方确认。'
+  ],
+  refund: '演示规则：体验开始 / 入住时间前24小时可免费取消；不足24小时请联系运营协商。',
+  comboText: '想把住宿与体验一起安排？看看组合套餐',
+  priceCard: {
+    eyebrow: 'MAKE A GOOD DAY',
+    price: '580',
+    weekendPrice: '680',
+    tags: ['山景露台', '含双人早餐', '独立卫浴'],
+    closedDates: ['2026-10-23'],
+    buttonText: '预约这段好时光',
+    footnote: '此为模拟预约，不发生真实扣款。'
+  }
+}
+
+/* ================= 民宿预约页 ================= */
+
+export interface StayBookingData {
+  eyebrow: string
+  title: string
+  steps: string[]
+  /** 01 入住安排卡 */
+  stayNote: string
+  /** 02 入住信息卡 */
+  maxGuests: number
+  guestNote: string
+  namePlaceholder: string
+  phonePlaceholder: string
+  idCardTip: string
+  remarkLabel: string
+  remarkPlaceholder: string
+  /** 03 预约须知卡 */
+  bookingNotices: string[]
+  agreeText: string
+  /** 摘要卡 */
+  summaryEyebrow: string
+  submitText: string
+  submitFootnote: string
+}
+
+export const stayBookingData: StayBookingData = {
+  eyebrow: 'PLAN YOUR COUNTRYSIDE MOMENT',
+  title: '选个日子，来村里做客',
+  steps: ['选择项目', '填写预约', '模拟支付'],
+  stayNote: '共 1 晚 · 周五/周六每晚加价 ¥100。日期价格以日历为准。',
+  maxGuests: 2,
+  guestNote: '儿童亦计入参与人数，最多2人',
+  namePlaceholder: '请填写入住人姓名',
+  phonePlaceholder: '请填写手机号',
+  idCardTip: '身份证信息到店登记。此 Demo 不采集或存储身份证号码，请勿填写真实身份资料。',
+  remarkLabel: '需求备注（选填）',
+  remarkPlaceholder: '团建名称、儿童情况、用餐忌口或其他需求',
+  bookingNotices: [
+    '演示规则：体验开始 / 入住时间前24小时可免费取消；不足24小时请联系运营协商。',
+    '请提前15分钟到达；儿童需成人陪同，手作操作遵守导师指引；如遇天气影响由运营联系调整。'
+  ],
+  agreeText: '我已阅读预约与退改规则，知晓这是演示订单，无真实付款。',
+  summaryEyebrow: 'YOUR RESERVATION',
+  submitText: '提交演示预约',
+  submitFootnote: '只作流程演示 · 不产生真实消费'
+}

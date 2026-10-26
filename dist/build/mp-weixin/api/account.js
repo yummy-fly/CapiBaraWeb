@@ -1,0 +1,1 @@
+"use strict";const t=require("./index.js"),a=require("../data/account.js");exports.fetchAccountData=function(){return t.fetchData(a.accountData)},exports.fetchFavoritesData=function(){return t.fetchData(a.favoritesData)};

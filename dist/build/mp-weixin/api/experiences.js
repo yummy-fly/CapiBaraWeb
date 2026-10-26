@@ -1,0 +1,1 @@
+"use strict";const e=require("./index.js"),t=require("../data/experiences.js");exports.fetchExperienceBooking=function(r){return e.fetchData(t.experienceBookingData)},exports.fetchExperienceDetail=function(r){return e.fetchData(t.experienceDetailData)},exports.fetchExperiencesData=function(){return e.fetchData(t.experiencesData)};
